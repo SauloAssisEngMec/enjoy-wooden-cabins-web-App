@@ -1,42 +1,35 @@
-import styled from "styled-components"
+import { BrowserRouter , Routes, Route, Navigate} from "react-router-dom"
 import GlobalStyles from "./styles/GlobalStyles"
-import Heading from "./components/Heading"
-import Button from "./components/Button"
-import Input from "./components/Input"
-import Row from "./components/Row"
+import Dashboard from "./pages/Dashboard"
+import Account from "./pages/Account"
+import Bookings from "./pages/Bookings"
+import Cabins from "./pages/Cabins"
+import Login from "./pages/Login"
+import Settings from "./pages/Settings"
+import Users from "./pages/Users"
+import PageNotFound from "./pages/PageNotFound"
 
-styled
 
 function App() {
-  return (
-    <>
-    <GlobalStyles/>
-    <Row >
-    <Row type='horizontal'>
-      <Heading as="h1">
-        Enjoy wooden cabins
-      </Heading>
-      <div>
-        <Heading as="h2">
-          register
-        </Heading>
-
-        <Button>Check in</Button>
-        <Button variation='secondary' size='small' >Check out</Button>
-      </div>
-    </Row>
-    <Row >
-      <Heading as="h3">
-        Form
-      </Heading>
-      <form>
-        <Input type="number"></Input>
-        <Input type="number"></Input>
-      </form>
-    </Row>
-    </Row>
-    </>
-  )
+    return (
+        <>
+        <GlobalStyles/>
+        <BrowserRouter>
+            <Routes>
+            <Route index element={<Navigate replace to='dashboard'/>}></Route>
+                <Route path="dashboard" element={<Dashboard/>}></Route>
+                <Route path="account" element={<Account/>}></Route>
+                <Route path="bookings" element={<Bookings/>}></Route>
+                <Route path="cabins" element={<Cabins/>}></Route>
+                <Route path="login" element={<Login/>}></Route>
+                <Route path="settings" element={<Settings/>}></Route>
+                <Route path="users" element={<Users/>}></Route>
+                <Route path="*" element={<PageNotFound/>}></Route>  
+            </Routes>
+        </BrowserRouter>
+        
+        </>
+    )
 }
 
 export default App
