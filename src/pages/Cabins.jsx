@@ -1,14 +1,11 @@
-import { useEffect } from "react"
-import { getCabins } from "../services/apiCabins"
+
 import Row from "./../components/Row"
 import Heading from "./../components/Heading"
 import CabinTable from "../features/cabins/CabinTable"
 
 
 function Cabins() {
-    useEffect(() => {
-   getCabins().then((data) => console.log(data))
-    },[])
+   
     return (
         <>
         <Row type="vertical">
